@@ -1,0 +1,4 @@
+node_modules/
+
+# ignore config of database
+src/database/config.js
