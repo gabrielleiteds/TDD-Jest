@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
 const bcryptjs = require('bcryptjs');
 const uuid = require('uuid');
+const jwt = require('jsonwebtoken')
 
 //rounds for the hash of bcrypt
 const ROUNDS = 10;
@@ -39,6 +40,10 @@ const User = sequelize.define('User', {
 
 User.prototype.comparePassword = function (password) {
   return bcryptjs.compare(password, this.password);
+}
+
+User.prototype.generateToken = function () {
+  return jwt.sign({ id: this.id }, process.env.APP_SECRET)
 }
 
 module.exports = User;
