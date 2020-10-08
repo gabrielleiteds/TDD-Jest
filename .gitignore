@@ -6,3 +6,6 @@ src/database/config.js
 
 ##database of tests
 database.sqlite
+
+##coverage for tests
+coverage
